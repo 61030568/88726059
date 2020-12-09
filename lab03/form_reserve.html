@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hotel Booking</title>
+    <link href="css/mystyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+ <h3>Hotel Booking</h3>
+ <form method="POST" action="https://angsila.cs.buu.ac.th/~wittawas/632/88726059/lab02/afile.php">
+<table cellpadding = "8">
+    <tr><td><label for="roomtype">Room Type</label></td>          
+        <td><select name="roomtype">
+            <option value="Please Select">Please Select</option>
+            <option value="Standard">Standard</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Deluxe">Deluxe</option>
+            </select>
+        </td>        
+    </tr>
+    <tr><td><label for="numguest">Number of Guests</label></td>    
+        <td><select name="numguest">
+            <option value="Please Select">Please Select</option>
+            <option value="1-2">1-2</option>
+            <option value="3-4">3-4</option>
+            <option value="5-6">5-6</option>
+            <option value="7-8">7-8</option>
+            </select></td></tr>                                                               
+    <tr><td>Name</td>
+        <td><input type="text" size="21" name="fame" id="fame" placeholder ="first">
+            <input type="text" size="21" name="lname" id="lname" placeholder ="last"></td>
+    </tr>
+    <tr><td>Email</td>
+        <td><input type="text" size="48" name="email" id="email" placeholder ="john@company.com"></td>
+    </tr>
+    <tr><td>Arrival</td>
+        <td><input type="date" size="16" name="arrivaldate" id="arrivaldate" placeholder ="MM / DD / YYY">
+            <input type="time" size="16" name="arrivaltime" id="arrivaltime" placeholder ="HH : MM"></td>
+    </tr>
+    <tr><td>Departure</td>
+        <td><input type="date" size="16" name="departuredate" id="departuredate" placeholder ="MM / DD / YYY">
+            <input type="time" size="16" name="departuretime" id="departuretime" placeholder ="HH : MM"></td>
+    </tr>
+    <tr><td><label for="pickup">Free Pickup</label></td>            
+        <td><input type="radio" name="pickup" id="pickup" value="Yes">Yes, Sure! </br>
+            <input type="radio" name="pickup" id="pickup" value="No">No, I already rented a car.</td> 
+    </tr>
+    <tr><td><label for="flightnum">Flight Number</label></td>            
+        <td><input type="text" size="48" name="flightnum" id="flightnum" placeholder ="C1209"></td>
+    </tr>
+    <tr><td>Other requests</td> 
+        <td><Textarea name="otherreq" id="otherreq" rows="5" cols="50"></Textarea></td>
+    </tr>
+    <tr><th colspan="2"><input type="submit" value="Complete Reservation" ></th></tr>
+</table>
+ </form>
+</body>
+</html>
