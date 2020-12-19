@@ -2,10 +2,9 @@
 <button onclick="guess()">Guess</button>
 <div id="hist"></div>
 <div id="result"></div>
-<button onclick="reset()">Start Over</button>
+<button onclick="doreset()">Start Over</button>
 <script>
     rn = Math.floor(Math.random()*100);
-    document.write(rn);
     //alert(rn)
     function guess() {
         text = document.getElementById("text").value;
@@ -21,5 +20,10 @@
             document.getElementById("result").innerHTML = "ถูกต้อง";
         }
     }
+        function doreset(){
+            document.getElementById('result').innerHTML='';
+            document.getElementById('hist').innerHTML='';
+            rn = Math.floor(Math.random()*100);
+        }
 </script>
 
