@@ -1,12 +1,15 @@
-<input type="text" placeholder="?" id="numder">
+<input type="text" placeholder="?" id="text">
 <button onclick="guess()">Guess</button>
 <div id="hist"></div>
 <div id="result"></div>
-<button onclick="">Start Over</button>
+<button onclick="reset()">Start Over</button>
 <script>
     rn = Math.floor(Math.random()*100);
-    //document.write(rn);
+    document.write(rn);
     //alert(rn)
-    function guess(n) {
+    function guess() {
+        text = document.getElementById("text").value;
+        document.getElementById("hist").innerHTML += text + " "; 
     }
 </script>
+
