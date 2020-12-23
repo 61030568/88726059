@@ -3,8 +3,6 @@
 </br>
 <input type="text" id="text">
 <button onclick="rand()">สุ่ม</button>
-<table id="myTable" border="1">
-</table>
 <script>
     function rand(){
         text = document.getElementById("text").value;
@@ -25,34 +23,5 @@
                     } 
                 }      
         }
-        for ( i=0;i<=text;i++){
-            var y = document.createElement("TR");
-                for ( j=1;j<=2;j++){
-                    var z = document.createElement("TH");
-                    if(j==1){
-                        if(i==0){
-                            z.innerHTML = "ตัวเลข" ;
-                            y.appendChild(z);
-                            x.appendChild(y);}
-                        else{
-                            z.innerHTML = ran[i] ;
-                            y.appendChild(z);
-                            x.appendChild(y); 
-                        }
-                    }
-                    else{
-                        if(i==0){
-                            z.innerHTML = "ถูกสุ่ม(ครั้ง)" ;
-                            y.appendChild(z);
-                            x.appendChild(y);}
-                        else{
-                            z.innerHTML = num[i] ;
-                            y.appendChild(z);
-                            x.appendChild(y); 
-                        }
-                    }
-                }
-        }
-        document.getElementById("myTable").appendChild(x);
     }
-</script> 
+</script>
