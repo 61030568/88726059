@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mymusic</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<style>
+    div {
+      padding: 25px 200px 100px 200px;
+    }
+    </style>
+<body>
+    <div class="jumbotron text-center">
+        <h1>MUSIC</h1>
+        <p>เพลงของฉัน</p> 
+    </div>
+<div class="text-center">
+<h1>ค้นหาเพลง</h1>
+<a href="newsong.html">เพิ่มเพลงใหม่</a></br> 
+<input type="text" id="song" placeholder="ชื่อเพลงที่ต้องการค้นหา" size="50">
+</br>
+<button onclick="sech()">ค้นหา</button>
+<div id="demo"></div>
+<script>
+    function sech(){
+        document.getElementById("demo").innerHTML = " " ;  //เริ่มต้น
+        songs = JSON.parse(localStorage.getItem("strs")); //แปลง JSON string กลับเป็นอะเรย์
+        // alert(songs[0][0]);
+        song = document.getElementById("song").value; //กำหนดค่าที่ป้อน
+        for(i=0 ; i<songs.length ;i++){
+            if(songs[i][0].indexOf(song)>= 0){
+                document.getElementById("demo").innerHTML += songs[i][0] + " - " + songs[i][1] +"<br>"+ songs[i][2] +"<br>" +"<br>"; 
+            } //ถ้าหาตัวอังษรที่เหมือนกันเจอ จะปริ้นชื่อเพลง ศิลปิน เนื้อเพลง
+        }
+        demo = document.getElementById("demo").innerHTML;
+        if(demo == " "){
+            document.getElementById("demo").innerHTML = "ไม่พบเพลง" ;}
+    }//ถ้ายังเป็นเหมือนเดิมอยู่ จะปริ้นว่าไม่พบเพลง
+</script>
+</div>
+</body>
+</html>
+
