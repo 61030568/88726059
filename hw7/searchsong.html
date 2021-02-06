@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Search song</title>
+</head>
+<body>   
+<div class="container">
+    <h2>ค้นหาเพลง</h2>
+    <p>กรุณาพิมพ์ชื่อเพลงหรือศิลปินที่ต้องการค้นหา</p>
+
+     <!-- ส่งไปยังไฟล์ search.php แบบpost -->
+    <form method="post" action="search.php">
+
+        <!-- 3.a ช่องค้นหา 1 ช่อง โดยค้นหาจาก ชื่อเพลง หรือ ชื่อศิลปิน -->
+        <input type="text" name="song" id="song" placeholder="ชื่อเพลงหรือศิลปินที่ต้องการค้นหา" size="50">
+        <button onclick="search" >Search</button>
+
+        <!-- 3.b มีลิ้ง Advance Search เมื่อคลิกจะให้สามารถเลือก หมวดหมู่ ปีที่ออกอัลบัม เพิ่มเติมได้ -->
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Advance Search</button>
+        <div id="demo" class="collapse">
+            <select name="cat">
+                <option value="0">--เลือกสไตล์--</option>
+                <option value="5001">ป็อป</option>
+                <option value="5002">ร็อก</option>
+            </select>
+            <input type="text" name="year" id="year" placeholder="ปีที่ออกอัลบั้ม" size="35">
+        </div>
+    </form>
+</div>
+<script>
+    function search() {
+        song = document.getElementById('song').value;
+        var formElement = document.querySelector("form");
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+            }
+        }
+
+        // JSON จากไฟล์ search.php ให้นำมาจัดแสดงผลลัพธ์
+        request.open("POST", "search.php");
+        request.send(formData);
+
+        document.getElementById("song").value = "";
+        document.querySelector("#song").value = "";
+    }
+</script>
+
+
+</body>
+</html>
+
