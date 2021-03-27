@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Baby Blog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+    table, th, td {
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+    }
+    p {
+        font-size: 20px;
+    }
+    .fakeimg {
+        height: 200px;
+        background: #aaa;
+  }
+  </style>
+</head>
+<body >
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="add_blog.php">เพิ่มบทความ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>Baby Blog</h1>
+        <p>เว็บไซต์เขียนบทความที่นิยมที่สุดในปัจจุบัน</p> 
+      </div>
+      
+      
+
+<div class="container">    
+
+<p id="demo" ></p>
+
+<script>
+    var xmlhttp = new XMLHttpRequest(); 
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            blogs = JSON.parse(this.responseText);
+            txtHtml = "<table align='center' width='1100'";
+                for (i = 0; i < blogs.length; i++) {
+                    imgname = blogs[i].head_photo ;
+                    txtHtml += "<tr>";
+                    txtHtml += "<td align='center'>" + "</br>"+ "<img src='img/" + imgname + "' width='300x300px'>"  + "</td>";
+                    txtHtml += "<td width='600' >" + "</br>" + "<h5>" + "" +  blogs[i].category  + "</h3>" 
+                            + "<a color='black' href='read_blog.php?id=" + blogs[i].blog_id  + "'>"+ "<h3>"+ "<b>"+ "<FONT COLOR='black'>" + blogs[i].heading + "</FONT>" + "</b>" + "</h3>" + "</a>" + "</br>"
+                            + "เขียนโดย " + " : " + blogs[i].author_name + "</br>"  
+                            + " | " + " " + blogs[i].date + "</br>"
+                            + "<hr color='black' >" + "</td>" ;
+                                
+                    
+
+                            
+                    txtHtml += "</tr>" ;
+                }
+                    txtHtml += "</table>";
+                    document.getElementById("demo").innerHTML = txtHtml;
+        }
+    };
+                    
+    xmlhttp.open("GET", "main.php");
+    xmlhttp.send();
+                
+
+</script>
+                
+
+
+</div>
+</body>
+</html>

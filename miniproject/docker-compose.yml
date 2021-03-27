@@ -1,0 +1,46 @@
+version: "3.0"
+services:
+   laravel-web:
+     depends_on:
+       - laravel-db
+     container_name: laravel-web
+     image: bitnami/laravel:latest
+     environment:
+       - DB_HOST=laravel-db
+       - DB_USERNAME=root
+       - DB_DATABASE=Blog
+       - DB_PASSWORD=123456
+     ports:
+       - "8000:3000"
+     networks:
+       - laraveldev_net
+     restart: always
+     volumes:
+       - D:\61030568\app:/app
+
+   laravel-db:
+     container_name: laravel-db
+     image: mysql:5.7
+     environment:
+       - MYSQL_ROOT_PASSWORD=123456
+     networks:
+       - laraveldev_net
+     restart: always
+     volumes:
+       - D:\61030568\mysql:/var/lib/mysql
+       - D:\61030568\data:/root
+
+   laravel-phpmyadmin:
+     container_name: laravel-phpmyadmin
+     image: phpmyadmin/phpmyadmin
+     environment:
+       - PMA_HOST=laravel-db
+     ports:
+       - "8001:80"
+     networks:
+       - laraveldev_net
+     restart: always
+
+networks:
+   laraveldev_net:
+     driver: bridge
